@@ -1,0 +1,251 @@
+<template>
+  <div>
+    <el-table
+      :data="table1_info"
+      stripe
+      style="width: 100%"
+      :header-cell-class-name="set_header"
+      ref="MT1_table"
+    >
+      <el-table-column prop="index" label="序号" width="60"> </el-table-column>
+      <el-table-column prop="project_name" label="项目名称" width="190">
+        <template slot-scope="scope">
+          <router-link
+            @click="handleCellClick1(scope.row, scope.column)"
+            class="MT1_project_name"
+            to="/ProjectDetails"
+          >
+            {{ scope.row.project_name }}
+          </router-link>
+        </template>
+      </el-table-column>
+      <el-table-column prop="project_id" label="项目编号" width="100">
+      </el-table-column>
+      <el-table-column prop="teacher" label="指导教师" width="100">
+      </el-table-column>
+      <el-table-column prop="head" label="负责人" width="100">
+      </el-table-column>
+      <el-table-column prop="department" label="系别" width="130">
+      </el-table-column>
+      <el-table-column prop="project_type" label="项目类型" width="130">
+      </el-table-column>
+      <el-table-column prop="start_time" label="申报时间" width="130">
+      </el-table-column>
+      <el-table-column label="提交大创日志" width="130">
+        <template slot-scope="scope">
+          <div>已提交{{ scope.row.submit_times }}次</div>
+        </template>
+      </el-table-column>
+    </el-table>
+    <el-pagination layout="prev, pager, next" :total="100"> </el-pagination>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "Managetable2",
+  data() {
+    return {
+      dialogVisible: false,
+      temp_line: 0,
+      table1_info: [
+        {
+          index: "1",
+          project_name: "a",
+          project_id: "123",
+          teacher: "王某某",
+          head: "xxx",
+          department: "计算机系",
+          project_type: "校级",
+          start_time: "2022-10-2",
+          project_status: "立项审核未通过",
+          operate: "详情",
+          submit_times: 1,
+        },
+        {
+          index: "1",
+          project_name: "b",
+          project_id: "123",
+          teacher: "王某某",
+          head: "xxx",
+          department: "计算机系",
+          project_type: "校级",
+          start_time: "2022-10-2",
+          project_status: "立项审核中",
+          operate: "详情",
+          submit_times: 1,
+        },
+        {
+          index: "1",
+          project_name: "c",
+          project_id: "123",
+          teacher: "刘某某",
+          head: "xxx",
+          department: "计算机系",
+          project_type: "校级",
+          start_time: "2022-10-2",
+          project_status: "立项审核未通过",
+          operate: "详情",
+          submit_times: 1,
+        },
+        {
+          index: "1",
+          project_name: "d",
+          project_id: "123",
+          teacher: "王某某",
+          head: "xxx",
+          department: "计算机系",
+          project_type: "校级",
+          start_time: "2022-10-2",
+          project_status: "立项审核中",
+          operate: "详情",
+          submit_times: 2,
+        },
+        {
+          index: "1",
+          project_name: "e",
+          project_id: "123",
+          teacher: "王某某",
+          head: "xxx",
+          department: "计算机系",
+          project_type: "校级",
+          start_time: "2022-10-2",
+          project_status: "立项审核中",
+          operate: "详情",
+          submit_times: 1,
+        },
+        {
+          index: "1",
+          project_name: "f",
+          project_id: "123",
+          teacher: "王某某",
+          head: "xxx",
+          department: "计算机系",
+          project_type: "校级",
+          start_time: "2022-10-2",
+          project_status: "立项审核中",
+          operate: "详情",
+          submit_times: 1,
+        },
+        {
+          index: "1",
+          project_name: "g",
+          project_id: "123",
+          teacher: "王某某",
+          head: "xxx",
+          department: "计算机系",
+          project_type: "校级",
+          start_time: "2022-10-2",
+          project_status: "立项审核中",
+          operate: "详情",
+          submit_times: 1,
+        },
+        {
+          index: "1",
+          project_name: "h",
+          project_id: "123",
+          teacher: "王某某",
+          head: "xxx",
+          department: "计算机系",
+          project_type: "校级",
+          start_time: "2022-10-2",
+          project_status: "立项审核中",
+          operate: "详情",
+          submit_times: 1,
+        },
+        {
+          index: "1",
+          project_name: "i",
+          project_id: "123",
+          teacher: "王某某",
+          head: "xxx",
+          department: "计算机系",
+          project_type: "校级",
+          start_time: "2022-10-2",
+          project_status: "立项审核中",
+          operate: "详情",
+          submit_times: 1,
+        },
+        {
+          index: "1",
+          project_name: "j",
+          project_id: "123",
+          teacher: "王某某",
+          head: "xxx",
+          department: "计算机系",
+          project_type: "校级",
+          start_time: "2022-10-2",
+          project_status: "立项审核中",
+          operate: "详情",
+          submit_times: 1,
+        },
+        {
+          index: "1",
+          project_name: "k",
+          project_id: "123",
+          teacher: "王某某",
+          head: "xxx",
+          department: "计算机系",
+          project_type: "校级",
+          start_time: "2022-10-2",
+          project_status: "立项审核中",
+          operate: "详情",
+          submit_times: 1,
+        },
+      ],
+    };
+  },
+  methods: {
+    set_header() {
+      return "MT1";
+    },
+    handleCellClick2(row, col) {
+      console.log(row);
+      this.dialogVisible = true;
+      this.temp_line = row;
+      // console.log(this.idx);
+    },
+  },
+};
+</script>
+
+<style scoped>
+.MT1 {
+  text-align: center;
+  background-color: #0769b2 !important;
+}
+::v-deep .el-table th.el-table__cell {
+  background-color: #0769b2 !important;
+  color: black;
+}
+/* 条纹的颜色 */
+::v-deep .el-table__row--striped > .el-table__cell {
+  background-color: #d4e5f9 !important;
+}
+/* 所有单元格居中 */
+::v-deep .el-table div.cell {
+  text-align: center !important;
+}
+.MT1_project_name {
+  color: blue;
+  cursor: pointer;
+  text-decoration: underline;
+}
+/* 项目申请失败详情 */
+::v-deep .el-dialog {
+  width: 50% !important;
+  text-align: left;
+}
+::v-deep .el-dialog__header {
+  background-color: #cee1f0;
+}
+
+::v-deep .el-pagination {
+  text-align: center;
+}
+
+.M1_failedinfo {
+  display: inline-block;
+  width: 135px;
+}
+</style>
